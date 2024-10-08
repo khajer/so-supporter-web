@@ -2,8 +2,11 @@
 	import { goto } from '$app/navigation';
 	import { wallet } from '../../stores/solana.js';
 	import { writable } from 'svelte/store';
+	import { page } from '$app/stores';
 
 	let connectionStatus = writable('');
+
+	const fromUrl = $page.url.searchParams.get('from_url');
 
 	async function connectWallet() {
 		try {
@@ -13,7 +16,11 @@
 				const response = await provider.connect();
 				wallet.set(response.publicKey.toString());
 				connectionStatus.set('Wallet connected');
-				goto('/');
+				if (fromUrl !== null) {
+					goto(fromUrl);
+				} else {
+					goto('/');
+				}
 			} else {
 				connectionStatus.set('Phantom wallet not found');
 			}

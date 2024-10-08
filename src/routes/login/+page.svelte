@@ -1,23 +1,22 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { wallet } from '../../stores/solana.js';
 	import { writable } from 'svelte/store';
 	import { get } from 'svelte/store';
+	// @ts-ignore
 
 	let connectionStatus = writable('');
 
 	async function connectWallet() {
 		try {
-			if (window.solana && window.solana.isPhantom) {
-				const response = await window.solana.connect();
-
+			// @ts-ignore
+			let provider = window.solana;
+			if (provider && provider.isPhantom) {
+				const response = await provider.connect();
 				wallet.set(response.publicKey.toString());
 
-				const storedWallet = get(wallet);
-				// console.log(storedWallet);
-
 				connectionStatus.set('Wallet connected');
-				// window.location.href = '/your-protected-page'; // Redirect to your protected page
-				// window.location.href = '/';
+				goto('/');
 			} else {
 				connectionStatus.set('Phantom wallet not found');
 			}

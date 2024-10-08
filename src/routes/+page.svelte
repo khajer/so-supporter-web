@@ -1,15 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
-	import { wallet } from '../stores/solana.js';
 	import { get } from 'svelte/store';
+	import { wallet } from '../stores/solana.js';
+	import { goto } from '$app/navigation';
 
 	onMount(async () => {
 		const storedWallet = get(wallet);
-		console.log(wallet);
-		console.log(storedWallet);
-
 		if (!storedWallet) {
-			// window.location.href = '/login'; // Redirect to login page
+			goto('/login');
 		}
 	});
 </script>

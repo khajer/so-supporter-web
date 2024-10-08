@@ -34,7 +34,7 @@
 	5555 5555 5555
 	<div class="cards-container">
 		{#each data as item}
-			<Card title={item.name} image={item.image} key={item.id} href="/{item.id}" />
+			<Card title={item.name} image={item.image} key={item.id} href="/id/{item.id}" />
 		{/each}
 	</div>
 </section>

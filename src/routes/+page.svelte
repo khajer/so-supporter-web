@@ -1,4 +1,14 @@
 <script>
+	import { onMount } from 'svelte';
+	import { wallet } from '../stores/solana.js';
+	import { get } from 'svelte/store';
+
+	onMount(async () => {
+		const storedWallet = get(wallet);
+		if (!storedWallet) {
+			window.location.href = '/login'; // Redirect to login page
+		}
+	});
 </script>
 
 <svelte:head>

@@ -5,8 +5,11 @@
 
 	onMount(async () => {
 		const storedWallet = get(wallet);
+		console.log(wallet);
+		console.log(storedWallet);
+
 		if (!storedWallet) {
-			window.location.href = '/login'; // Redirect to login page
+			// window.location.href = '/login'; // Redirect to login page
 		}
 	});
 </script>

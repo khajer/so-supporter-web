@@ -6,7 +6,7 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>5555 5555</section>
+<section>5555 5555 5555</section>
 
 <style>
 	section {

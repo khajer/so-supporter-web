@@ -1,13 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
-	import { get } from 'svelte/store';
-	import { wallet } from '../stores/solana.js';
+	// import { get } from 'svelte/store';
+	// import { wallet } from '../stores/solana.js';
 	import { goto } from '$app/navigation';
 	import Card from './Card.svelte';
 
 	onMount(async () => {
-		const storedWallet = get(wallet);
-		if (!storedWallet) {
+		const publicKey = localStorage.getItem('publicKey');
+		if (publicKey === null || publicKey === undefined) {
 			goto('/login');
 		}
 	});
@@ -31,7 +31,7 @@
 </svelte:head>
 
 <section>
-	5555 5555 5555
+	Support
 	<div class="cards-container">
 		{#each data as item}
 			<Card title={item.name} image={item.image} key={item.id} href="/id/{item.id}" />

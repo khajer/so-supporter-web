@@ -1,6 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { wallet } from '../../stores/solana.js';
+	// import { wallet } from '../../stores/solana.js';
 	import { writable } from 'svelte/store';
 	import { page } from '$app/stores';
 
@@ -14,8 +14,11 @@
 			let provider = window.solana;
 			if (provider && provider.isPhantom) {
 				const response = await provider.connect();
-				wallet.set(response.publicKey.toString());
+				// wallet.set(response.publicKey.toString());
 				connectionStatus.set('Wallet connected');
+
+				localStorage.setItem('publicKey', JSON.stringify(response.publicKey.toString()));
+
 				if (fromUrl !== null) {
 					goto(fromUrl);
 				} else {

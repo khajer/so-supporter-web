@@ -2,8 +2,6 @@
 	import { goto } from '$app/navigation';
 	import { wallet } from '../../stores/solana.js';
 	import { writable } from 'svelte/store';
-	import { get } from 'svelte/store';
-	// @ts-ignore
 
 	let connectionStatus = writable('');
 
@@ -14,7 +12,6 @@
 			if (provider && provider.isPhantom) {
 				const response = await provider.connect();
 				wallet.set(response.publicKey.toString());
-
 				connectionStatus.set('Wallet connected');
 				goto('/');
 			} else {

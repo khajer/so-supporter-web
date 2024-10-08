@@ -8,8 +8,8 @@
 	const id = $page.params.id;
 
 	onMount(async () => {
-		const storedWallet = get(wallet);
-		if (!storedWallet) {
+		const publicKey = localStorage.getItem('publicKey');
+		if (publicKey === null || publicKey === undefined) {
 			goto('/login?from_url=/id/' + id);
 		}
 	});

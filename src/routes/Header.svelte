@@ -1,15 +1,19 @@
 <script>
-	import github from '$lib/images/github.svg';
+	// import github from '$lib/images/github.svg';
+	import user from '$lib/images/user.svg';
+	import home from '$lib/images/home.svg';
 </script>
 
 <header>
-	<div class="corner">x</div>
+	<div class="corner">
+		<a href="/"><img src={home} alt="home" /></a>
+	</div>
 
 	<nav>center</nav>
 
 	<div class="corner">
-		<a href="https://github.com/khajer/so-supporter-web">
-			<img src={github} alt="GitHub" />
+		<a href="/profile">
+			<img src={user} alt="profile" />
 		</a>
 	</div>
 </header>
